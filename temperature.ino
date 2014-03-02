@@ -8,7 +8,7 @@
 /*
  * Displays a given temperature on the LCD screen
  */
-void displayTemp(float temp) {
+void displayTemps(float currentTemp, float targetTemp) {
   // Declare which fonts we will be using
   extern uint8_t BigFont[];
 
@@ -17,15 +17,19 @@ void displayTemp(float temp) {
 
   // Convert temperature to a string representation
   // so it can be displayed on the LCD screen.
-  String strTemp = dtostrf(temp, 5, 2, buffer);
+  String strCurrentTemp = dtostrf(currentTemp, 5, 2, buffer);
+  String strTargetTemp = dtostrf(targetTemp, 5, 2, buffer);
 
   LCD.setFont(BigFont);
   LCD.fillScr(VGA_TEAL);
   LCD.setBackColor(VGA_TEAL);
   LCD.setColor(255, 255, 255);
 
-  LCD.print(strTemp, CENTER, 80);
+  LCD.print(strCurrentTemp, CENTER, 80);
   LCD.print("Degrees F", CENTER, 100);
+
+  LCD.print(strTargetTemp, CENTER, 120);
+  LCD.print("Degrees F", CENTER, 140);
 }
 
 /*
