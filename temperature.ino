@@ -42,6 +42,7 @@ float getTemp() {
   // No more sensors on chain, reset search
   if (!ds.search(addr)) {
     ds.reset_search();
+    Serial.println("No more sensors.");
     return -1000;
   }
 
